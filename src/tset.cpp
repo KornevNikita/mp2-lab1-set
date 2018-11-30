@@ -148,12 +148,12 @@ istream &operator>>(istream &istr, TSet &s) // ввод
   int i;
   cin >> i;
   for (; ((i > -1) && (i < s.MaxPower)); cin >> i)
-    s.bitField.SetBit(i);
+    s.BitField.SetBit(i);
   return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-  ostr << s.bitField << ' ';
+  ostr << s.BitField << ' ';
   return ostr;
 }
