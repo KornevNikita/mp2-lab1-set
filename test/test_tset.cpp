@@ -295,3 +295,55 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+
+TEST(TSet, MYTEST_can_compare_two_equally_sets)
+{
+  const int size = 4;
+  TSet set1(size), set2(size);
+  // set1 = set2 = {1, 3}
+  set1.InsElem(1);
+  set1.InsElem(3);
+  set2.InsElem(1);
+  set2.InsElem(3);
+
+  EXPECT_EQ(set1 == set2, 1);
+}
+
+TEST(TSet, MYTEST_can_compare_two_non_equally_sets)
+{
+  const int size = 4;
+  TSet set1(size), set2(size);
+  // set1 = set2 = {1, 3}
+  set1.InsElem(1);
+  set1.InsElem(3);
+  set2.InsElem(1);
+  set2.InsElem(2);
+
+  EXPECT_EQ(set1 == set2, 0);
+}
+
+TEST(TSet, MYTEST_can_compare_two_inequally_sets)
+{
+  const int size = 4;
+  TSet set1(size), set2(size);
+  // set1 = set2 = {1, 3}
+  set1.InsElem(1);
+  set1.InsElem(3);
+  set2.InsElem(1);
+  set2.InsElem(3);
+
+  EXPECT_EQ(set1 != set2, 0);
+}
+
+TEST(TSet, MYTEST_can_compare_two_non_inequally_sets)
+{
+  const int size = 4;
+  TSet set1(size), set2(size);
+  // set1 = set2 = {1, 3}
+  set1.InsElem(1);
+  set1.InsElem(3);
+  set2.InsElem(1);
+  set2.InsElem(2);
+
+  EXPECT_EQ(set1 != set2, 1);
+}

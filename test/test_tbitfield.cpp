@@ -309,3 +309,63 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+
+//-----------------------------------------------------------------------------
+
+TEST(TBitField, MYTEST_can_compare_equally_bitfields)
+{
+  const int size = 4;
+  TBitField bf1(size), bf2(size);
+
+  bf1.SetBit(1);
+  bf1.SetBit(3);
+
+  bf2.SetBit(1);
+  bf2.SetBit(3);
+
+  EXPECT_EQ(bf2 == bf1, 1);
+}
+
+TEST(TBitField, MYTEST_can_compare_non_equally_bitfields)
+{
+  const int size = 4;
+  TBitField bf1(size), bf2(size);
+
+  bf1.SetBit(1);
+  bf1.SetBit(2);
+
+  bf2.SetBit(1);
+  bf2.SetBit(3);
+
+  EXPECT_EQ(bf2 == bf1, 0);
+}
+
+TEST(TBitField, MYTEST_can_compare_inequaly_bitfields)
+{
+  const int size = 4;
+  TBitField bf1(size), bf2(size);
+
+  bf1.SetBit(1);
+  bf1.SetBit(3);
+
+  bf2.SetBit(1);
+  bf2.SetBit(3);
+
+  EXPECT_EQ(bf2 != bf1, 0);
+}
+
+TEST(TBitField, MYTEST_can_compare_non_inequal_bitfields)
+{
+  const int size = 4;
+  TBitField bf1(size), bf2(size);
+
+  bf1.SetBit(1);
+  bf1.SetBit(2);
+
+  bf2.SetBit(1);
+  bf2.SetBit(3);
+
+  EXPECT_EQ(bf2 != bf1, 1);
+}
+
+
