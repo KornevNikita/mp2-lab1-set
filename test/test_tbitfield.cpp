@@ -311,6 +311,7 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 }
 
 //-----------------------------------------------------------------------------
+// MY TESTS
 
 TEST(TBitField, MYTEST_can_compare_equally_bitfields)
 {
@@ -368,4 +369,14 @@ TEST(TBitField, MYTEST_can_compare_non_inequal_bitfields)
   EXPECT_EQ(bf2 != bf1, 1);
 }
 
-
+//TEST(TBitField, MYTEST_INPUT)
+//{
+//  //input 1 0 1
+//  //bf = [1 0 1]
+//  TBitField bf1(3), bf2(3);
+//  bf1.setBit(0);
+//  bf1.setBit(2);
+//
+//  cin >> bf2;
+//  EXPECT_EQ(bf1, bf2);
+//}

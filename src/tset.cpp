@@ -149,7 +149,7 @@ istream &operator>>(istream &istr, TSet &s) // ввод
   int i;
   cin >> i;
   for (; ((i > -1) && (i < s.maxPower)); cin >> i)
-    s.bitField.setBit(i);
+	s.bitField.SetBit(i);
   return istr;
 }
 
