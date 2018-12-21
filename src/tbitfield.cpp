@@ -35,44 +35,44 @@ TBitField::~TBitField()
   pMem = NULL;
 }
 
-int TBitField::getMemIndex(const int n) const // индекс Мем для бита n
+int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
   return n / (sizeof(uInt) * 8) ;
 }
 
-uInt TBitField::getMemMask(const int n) const // битовая маска для бита n
+uInt TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
   return 1 << (n % (sizeof(uInt) * 8));
 }
 
 // доступ к битам битового поля
 
-int TBitField::getLength(void) const // получить длину (к-во битов)
+int TBitField::GetLength(void) const // получить длину (к-во битов)
 {
   return bitLen;
 }
 
-void TBitField::setBit(const int n) // установить бит
+void TBitField::SetBit(const int n) // установить бит
 {
   if (n < 0 || n >= bitLen)
 	throw 1;
-  int index = getMemIndex(n);
-  pMem[index] = pMem[index] | getMemMask(n);
+  int index = GetMemIndex(n);
+  pMem[index] = pMem[index] | GetMemMask(n);
 }
 
-void TBitField::clrBit(const int n) // очистить бит
+void TBitField::ClrBit(const int n) // очистить бит
 {
   if (n < 0 || n > bitLen)
 	throw "index isn't correct";
-  int index = getMemIndex(n);
-  pMem[index] = pMem[index] & ~getMemMask(n);
+  int index = GetMemIndex(n);
+  pMem[index] = pMem[index] & ~GetMemMask(n);
 }
 
-int TBitField::getBit(const int n) const // получить значение бита
+int TBitField::GetBit(const int n) const // получить значение бита
 {
   if (n < 0 || n > bitLen)
 	throw "index isn't correct";
-  return (pMem[getMemIndex(n)] & getMemMask(n)) >> (n % (sizeof(uInt) * 8));
+  return (pMem[GetMemIndex(n)] & GetMemMask(n)) >> (n % (sizeof(uInt) * 8));
  }
 
 // битовые операции
@@ -141,8 +141,8 @@ TBitField TBitField::operator~(void) // отрицание
 {
   TBitField result(bitLen);
   for (int i = 0; i < bitLen; i++)
-	if (getBit(i) == 0)
-	  result.setBit(i);
+	if (GetBit(i) == 0)
+	  result.SetBit(i);
   return result;
 }
 
@@ -152,14 +152,14 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
   string str;
   istr >> str;
-  if (str.size() != bf.getLength())
+  if (str.size() != bf.GetLength())
 	throw "exception";
   for (int i = 0; i < bf.bitLen; i++)
   {
 	if (str[i] == '0')
-	  bf.clrBit(i);
+	  bf.ClrBit(i);
 	else if (str[i] == '1')
-	  bf.setBit(i);
+	  bf.SetBit(i);
 	else
 	  throw "exception";
   }
@@ -169,9 +169,9 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
   ostr << "[";
-  for (int i = bf.getLength(); i > 0; i--)
+  for (int i = bf.GetLength(); i > 0; i--)
   {
-	if (bf.getBit(i))
+	if (bf.GetBit(i))
 	  ostr << 1;
 	else
 	  ostr << 0;

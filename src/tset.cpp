@@ -17,7 +17,7 @@ TSet::TSet(const TSet &s) : bitField(s.bitField), maxPower(s.maxPower)
 }
 
 // конструктор преобразования типа
-TSet::TSet(const TBitField &bf) : bitField(bf), maxPower(bf.getLength())
+TSet::TSet(const TBitField &bf) : bitField(bf), maxPower(bf.GetLength())
 {
 }
 
@@ -26,24 +26,24 @@ TSet::operator TBitField()
   return bitField;
 }
 
-int TSet::getMaxPower(void) const // получить макс. к-во эл-тов
+int TSet::GetMaxPower(void) const // получить макс. к-во эл-тов
 {
   return maxPower;
 }
 
-int TSet::isMember(const int Elem) const // элемент множества?
+int TSet::IsMember(const int Elem) const // элемент множества?
 {
-  return bitField.getBit(Elem);
+  return bitField.GetBit(Elem);
 }
 
-void TSet::insElem(const int Elem) // включение элемента множества
+void TSet::InsElem(const int Elem) // включение элемента множества
 {
-  bitField.setBit(Elem);
+  bitField.SetBit(Elem);
 }
 
-void TSet::delElem(const int Elem) // исключение элемента множества
+void TSet::DelElem(const int Elem) // исключение элемента множества
 {
-  bitField.clrBit(Elem);
+  bitField.ClrBit(Elem);
 }
 
 // теоретико-множественные операции
@@ -98,7 +98,7 @@ TSet TSet::operator+(const int Elem) // объединение с элемент
   if ((Elem < maxPower) || (Elem > -1))
   {
     TSet result(bitField);
-    result.bitField.setBit(Elem);
+    result.bitField.SetBit(Elem);
 	return result;
   }
   else 
@@ -110,7 +110,7 @@ TSet TSet::operator-(const int Elem) // разность с элементом
   if ((Elem < maxPower) || (Elem > -1))
   {
 	TSet result(bitField);
-	result.bitField.clrBit(Elem);
+	result.bitField.ClrBit(Elem);
 	return result;
   }
   else
@@ -149,7 +149,7 @@ istream &operator>>(istream &istr, TSet &s) // ввод
   int i;
   cin >> i;
   for (; ((i > -1) && (i < s.maxPower)); cin >> i)
-	s.bitField.setBit(i);
+	s.bitField.SetBit(i);
   return istr;
 }
 

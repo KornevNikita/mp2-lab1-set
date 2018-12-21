@@ -26,21 +26,21 @@ int main()
   TBitField s(n + 1);
   // заполнение множества
   for (m = 2; m <= n; m++)
-    s.setBit(m);
+    s.SetBit(m);
   // проверка до sqrt(n) и удаление кратных
   for (m = 2; m * m <= n; m++)
     // если m в s, удаление кратных
-    if (s.getBit(m))
+    if (s.GetBit(m))
       for (k = 2 * m; k <= n; k += m)
-        if (s.getBit(k))
-          s.clrBit(k);
+        if (s.GetBit(k))
+          s.ClrBit(k);
   // оставшиеся в s элементы - простые числа
   cout << endl << "Печать множества некратных чисел" << endl << s << endl;
   cout << endl << "Печать простых чисел" << endl;
   count = 0;
   k = 1;
   for (m = 2; m <= n; m++)
-    if (s.getBit(m))
+    if (s.GetBit(m))
     {
       count++;
       cout << setw(3) << m << " ";
@@ -66,21 +66,21 @@ int main()
   TSet s(n + 1);
   // заполнение множества
   for (m = 2; m <= n; m++)
-    s.insElem(m);
+    s.InsElem(m);
   // проверка до sqrt(n) и удаление кратных
   for (m = 2; m * m <= n; m++)
     // если м в s, удаление кратных
-    if (s.isMember(m))
+    if (s.IsMember(m))
       for (k = 2 * m; k <= n; k += m)
-       if (s.isMember(k))
-         s.delElem(k);
+       if (s.IsMember(k))
+         s.DelElem(k);
   // оставшиеся в s элементы - простые числа
   cout << endl << "Печать множества некратных чисел" << endl << s << endl;
   cout << endl << "Печать простых чисел" << endl;
   count = 0;
   k = 1;
   for (m = 2; m <= n; m++)
-    if (s.isMember(m))
+    if (s.IsMember(m))
     {
       count++;
       cout << setw(3) << m << " ";
